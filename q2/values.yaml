@@ -1,0 +1,35 @@
+replicaCount: 3
+
+image:
+  repository: strm/helloworld-http
+  pullPolicy: IfNotPresent
+
+service:
+  type: ClusterIP
+  port: 80
+
+resources:
+  limits:
+    cpu: 100m
+    memory: 128Mi
+  requests:
+    cpu: 100m
+    memory: 128Mi
+
+livenessProbe:
+  initialDelaySeconds: 10
+  periodSeconds: 1
+  tcpSocket:
+    port: http
+readinessProbe:  
+  failureThreshold: 2
+  httpGet:
+    path: /
+    port: http
+
+autoscaling:
+  enabled: true
+  minReplicas: 3
+  maxReplicas: 100
+  targetCPUUtilizationPercentage: 80
+  targetMemoryUtilizationPercentage: 80

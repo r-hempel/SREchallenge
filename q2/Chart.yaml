@@ -1,0 +1,8 @@
+apiVersion: v2
+name: ex2
+description: Helm chart for qestion 2 of the SRE challenge by flaschenpost (ex2 = exercise 2)
+type: application
+
+version: 1.0.0
+
+appVersion: "1.0.0"
