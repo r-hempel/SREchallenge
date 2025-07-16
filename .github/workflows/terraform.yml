@@ -48,12 +48,13 @@ on:
       container_name:
         type: string
         default: sre
-      container_type:
-        type: string
-        default: private
-        options:
-        - private
-        - blob
+      # commented out as there is a hard limit of 10 inputs
+      # container_type:
+      #   type: string
+      #   default: private
+      #   options:
+      #   - private
+      #   - blob
 
 permissions:
   contents: read
@@ -114,6 +115,5 @@ jobs:
         echo ${{inputs.access_tier}} \
         echo ${{inputs.storage_account_tag_key}} \
         echo ${{inputs.storage_account_tag_value}} \
-        echo ${{inputs.container_name}} \
-        echo ${{inputs.container_type}}
+        echo ${{inputs.container_name}} \        
     
