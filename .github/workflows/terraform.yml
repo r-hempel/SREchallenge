@@ -3,19 +3,55 @@ name: 'Terraform'
 on:
   workflow_dispatch:
     inputs:
-      name:
+      resource_group_name:
+        type: string
+        description: The name of the Azure Resource Group to be created. 
+      resource_group_tag_key:
+        type: string
+        description: "A key-value pair tag for the resource group. The default is department: SRE."
+        default: department       
+      resource_group_tag_value:
+        type: string
+        description: "A key-value pair tag for the resource group. The default is department: SRE."
+        default: SRE 
+      storage_account_name:
+        type: string
+        description:  The name of the Azure Storage Account to be created.
+      storage_account_resource_group:
+        type: string
+        description: The resource group to associate the storage account with. Defaults to sre-challenge-flaschenpost.
+        default: sre-challenge-flaschenpost
+      sku:
         type: choice
-        description: Who to greet
-        options: 
-        - monalisa
-        - cschleiden
-      message:
-        required: true
-      use-emoji:
-        type: boolean
-        description: Include 🎉🤣 emojis
-      environment:
-        type: environment
+        description: The SKU of the storage account. The default is Standard_LRS. Other options may include Premium_LRS or Standard_GRS.
+        default: Standard_LRS
+        options:
+        - Premium_LRS
+        - Standard_GRS
+      access_tier:
+        type: choice
+        description:  The access tier for the storage account. The default is Hot. Other options include Cool. 
+        default: Hot
+        options:
+        - Hot
+        - Cool
+      storage_account_tag_key:
+        type: string
+        description: "A key-value pair tag for the resource group. The default is department: SRE."
+        default: department       
+      storage_account_tag_value:
+        type: string
+        description: "A key-value pair tag for the resource group. The default is department: SRE."
+        default: SRE 
+      container_name:
+        type: string
+        default: sre
+      container_type:
+        type: option
+        default: private
+        options:
+        - private
+        - blob
 
 permissions:
   contents: read
