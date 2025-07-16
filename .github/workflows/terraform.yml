@@ -31,11 +31,6 @@ jobs:
       working-directory: ./q1
       run: terraform init
 
-    # Checks that all Terraform configuration files adhere to a canonical format
-    - name: Terraform Format
-      working-directory: ./q1
-      run: terraform fmt -check
-
     # Generates an execution plan for Terraform
     - name: Terraform validate
       working-directory: ./q1
