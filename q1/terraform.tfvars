@@ -3,13 +3,15 @@ location = "West Europe"
 
 # AZ resourceGroup variables
 resourceGroupName = "sre-challenge-flaschenpost"
-resourceGroupTag = "SRE"
+resourceGroupTagKey = "department"
+resourceGroupTagValue = "SRE"
 
 # AZ storageAccount variables
-storageAccountName = "srechallengeforfp" # name had to be shortened, as it was too long
+storageAccountName = "srechallengeforflaschenpost"
 storageAccountResourceGroup = "sre-challenge-flaschenpost"
 storageAccountAccessTier = "Hot"
-storageAccountTag = "SRE"
+storageAccountTagKey = "department"
+storageAccountTagValue = "SRE"
 
 # AZ storageAccountCointainer variables
 storageAccountCointainerName = "sre"

@@ -7,7 +7,10 @@ variable "location" {
 variable "resourceGroupName" {
     type = string
 }
-variable "resourceGroupTag" {
+variable "resourceGroupTagKey" {
+    type = string
+}
+variable "resourceGroupTagValue" {
     type = string
 }
 
@@ -26,7 +29,10 @@ variable "storageAccountAccessTier" {
     type = string
     default = "Hot"
 }
-variable "storageAccountTag" {
+variable "storageAccountTagKey" {
+    type = string
+}
+variable "storageAccountTagValue" {
     type = string
 }
 

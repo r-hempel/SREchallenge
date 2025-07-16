@@ -1,0 +1,88 @@
+apiVersion: scaffolder.backstage.io/v1beta3
+kind: Template
+metadata:
+  name: create-azure-storage-container
+  title: Create azure storage container
+  description: Create an azure storage container (along the required resource group and storage account)  
+spec:
+  owner: user:guest
+  type: service
+  parameters:
+    - title: Azure Resource Group  
+      properties:      
+        resource_group_name: 
+          title: Resource Group Name
+          type: string
+          description:  The name of the Azure Resource Group to be created.
+        resource_group_tag_key: 
+          title: Resource Group Tag Key
+          type: string
+          description:  The key for the resource group tag
+          default: department
+        resource_group_tag_value: 
+          title: Resource Group Tag value
+          type: string
+          description:  The value for the resource group tag
+          default: SRE
+        storage_account_name:
+          title: Storage Account Name
+          type: string
+          description:  The name of the Azure Storage Account to be created
+        storage_account_resource_group:
+          title: Storage Account Resource Group
+          type: string
+          description:  The resource group to associate the storage account with
+          default: sre-challenge-flaschenpost
+        SKU:
+          title: SKU
+          type: string
+          description:  The SKU of the storage account.
+          default: Standard_LRS
+          enum:
+          - Standard_LRS
+          - Premium_LRS
+          - Standard_GRS
+        access_tier:
+          title: Access Tier
+          type: string
+          description: The access tier for the storage account.
+          default: Hot
+          enum:
+          - Hot
+          - Cool
+        storage_account_tag_key:
+          title: Storage Account Tag Key
+          type: string
+          description:  The key for the storage account tag
+          default: department
+        storage_account_tag_value:
+          title: Storage Account Tag Value
+          type: string
+          description:  The value for the storage account tag
+          default: department
+        container_name:
+          title: Container Name
+          type: string
+          description: The name of the storage container within the storage account.
+          default: sre
+        # container type is not present, as there is a hard coded limit of 10 input variables in github workflows
+
+  steps:
+    - id: github-action
+      name: Starting GitHub action
+      action: github:actions:dispatch
+      input:
+        workflowId:  terraform.yamml # ID of GitHub action WorkFlow
+        repoUrl: 'github.com?repo=SREchallenge&owner=r-hempel'
+        branchOrTagName: 'master'
+        workflowInputs:
+          resource_group_name: ${{ parameters.resource_group_name }}
+          resource_group_tag_key: ${{ parameters.resource_group_tag_key }}
+          resource_group_tag_value: ${{ parameters.resource_group_tag_value }}
+          storage_account_name: ${{ parameters.storage_account_name }}
+          storage_account_resource_group: ${{ parameters.storage_account_resource_group}}
+          sku : ${{parameters.SKU}}
+          access_tier: ${{parameters.access_tier}}
+          storage_account_tag_key: ${{parameters.storage_account_tag_key}}
+          storage_account_tag_value: ${{parameters.storage_account_tag_value}}
+          container_name: ${{parameters.container_name}}          

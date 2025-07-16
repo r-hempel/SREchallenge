@@ -18,6 +18,6 @@ resource "azurerm_resource_group" "sre-challenge-flaschenpost" {
   name     = var.resourceGroupName
   location = var.location
   tags = {
-    department = var.resourceGroupTag
+    "var.resourceGroupTagKey" = var.resourceGroupTagValue
   }
 }

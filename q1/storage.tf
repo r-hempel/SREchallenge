@@ -7,7 +7,7 @@ resource "azurerm_storage_account" "srechallengeforfp" {
   account_tier             = split("_", var.storageAccountSKU)[0]
 
   tags = {
-    department = var.storageAccountTag
+    "var.storageAccountTagKey" = var.storageAccountTagValue
   }
 }
 
