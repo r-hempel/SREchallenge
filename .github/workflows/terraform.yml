@@ -5,7 +5,8 @@ on:
     inputs:
       resource_group_name:
         type: string
-        description: The name of the Azure Resource Group to be created. 
+        description: The name of the Azure Resource Group to be created.
+        default: sre-challenge-flaschenpost
       resource_group_tag_key:
         type: string
         description: "A key-value pair tag for the resource group. The default is department: SRE."
@@ -17,6 +18,7 @@ on:
       storage_account_name:
         type: string
         description:  The name of the Azure Storage Account to be created.
+        default: srechallengeforfp
       storage_account_resource_group:
         type: string
         description: The resource group to associate the storage account with. Defaults to sre-challenge-flaschenpost.
