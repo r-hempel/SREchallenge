@@ -93,8 +93,8 @@ jobs:
     #   run: terraform plan \
     #     -var resourceGroupName=${{inputs.resource_group_name}}
     #     -var resourceGroupTagKey=${{inputs.resource_group_tag_key}}
-    #     -var resourceGroupTagValue=${{ inputs.resource_group_tag_value}}
-    #     -var storageAccountName=${{ inputs.storage_account_name}}
+    #     -var resourceGroupTagValue=${{inputs.resource_group_tag_value}}
+    #     -var storageAccountName=${{inputs.storage_account_name}}
     #     -var storageAccountResourceGroup=${{inputs.storage_account_resource_group}}
     #     -var storageAccountSKU=${{inputs.sku}}
     #     -var storageAccountAccessTier=${{inputs.access_tier}}
@@ -102,3 +102,18 @@ jobs:
     #     -var storageAccountTagValue=${{inputs.storage_account_tag_value}}
     #     -var storageAccountCointainerName=${{inputs.container_name}}
     #     -var storageAccountCointainerType=${{inputs.container_type}}
+
+    # validate input variables
+    - name: validate variables
+      run: echo ${{inputs.resource_group_name}} \
+        echo ${{inputs.resource_group_tag_key}} \
+        echo ${{inputs.resource_group_tag_value}} \
+        echo ${{inputs.storage_account_name}} \
+        echo ${{inputs.storage_account_resource_group}} \
+        echo ${{inputs.sku}} \
+        echo ${{inputs.access_tier}} \
+        echo ${{inputs.storage_account_tag_key}} \
+        echo ${{inputs.storage_account_tag_value}} \
+        echo ${{inputs.container_name}} \
+        echo ${{inputs.container_type}}
+    
