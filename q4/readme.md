@@ -3,3 +3,4 @@
 * Usage:
     * Run `go run main.go moviedb.go <your-movie-titles>` to execute the request using the the passed movie titles.
     * You can pass either multiple single command line arguments to search for multiple movie titles (e.g. `go run main.go moviedb.go Spiderman Waterworld` returns two requests for the query `[...]?Title=Spiderman` and `[...]?Title=Waterworld`) or wrap it in Quotation Marks to search for movie titles that consist of several words (e.g. `go run main.go moviedb.go Spiderman "Harry Potter"`)
+* there is also a GitHub actions pipeline present to execute the above mentioned commands
