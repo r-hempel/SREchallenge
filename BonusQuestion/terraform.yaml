@@ -72,7 +72,7 @@ spec:
       name: Starting GitHub action
       action: github:actions:dispatch
       input:
-        workflowId:  terraform.yamml # ID of GitHub action WorkFlow
+        workflowId:  terraform.yaml # ID of GitHub action WorkFlow
         repoUrl: 'github.com?repo=SREchallenge&owner=r-hempel'
         branchOrTagName: 'master'
         workflowInputs:
